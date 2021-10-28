@@ -48,9 +48,9 @@ public class TcpEchoClient {
                 System.out.println(log);
             }
         }catch(Exception e){
-
+        	e.printStackTrace();
         }finally {
-
+        		
         }
     }
 
