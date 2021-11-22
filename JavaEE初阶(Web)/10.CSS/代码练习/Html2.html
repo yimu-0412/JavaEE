@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            line-height: 30px;
+
+        }
+
+        .bgc {
+            background: #4d4dc0;
+        }
+        .bgc .one {
+            background: red;
+        }
+        .bgc .two {
+            background: green;
+        }
+        .bgc .three {
+            background:transparent;
+        }
+        .bgi {
+            background: green;
+            background-image: url(image/dog.jpg);
+            height: 800px;
+            background-repeat: repeat;
+            background-position: left top;
+            /* background-size: 50% 50%; */
+            /* background-size: contain; */
+            background-size: cover;
+        }
+
+        .br {
+            height: 300px;
+            width: 600px;
+            background-color:gray;
+            border-radius: 150px;
+        }
+
+        .br1 {
+            height: 50px;
+            width: 200px;
+            background-color: gray;
+            border-radius: 25px;
+
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .br1:active {
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+    <p class="bgi">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
+         nesciunt sunt optio repellendus excepturi enim praesentium 
+         voluptate reprehenderit aliquid quibusdam nemo suscipit
+          saepe. Rerum aut obcaecati ipsum quod, blanditiis quam!
+    </p>
+
+    <div class="bgc">
+        <div class="one">红色背景</div>
+        <div class="two">绿色背景</div>
+        <div class="three">透明背景</div>
+    </div>
+    <div class="br">
+
+    </div>
+    <div class="br1">
+        按钮
+    </div>
+</body>
+</html>
