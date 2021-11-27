@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 获取/修改元素属性 -->
+    <!-- <img src="image/male.png" alt="这是男孩纸" title="男孩纸"> -->
+<!--    <script>-->
+<!--        let img = document.querySelector('img');-->
+<!--        img.onclick = function(){-->
+<!--            if(img.alt == '这是男孩纸'){-->
+<!--                img.src= 'image/female.png';-->
+<!--                img.alt = '这是女孩纸';-->
+<!--                img.title = '女孩纸';-->
+<!--            }else{-->
+<!--                img.src='image/male.png';-->
+<!--                img.alt="这是男孩纸";-->
+<!--                img.title="男孩纸";-->
+<!--            }-->
+<!--        }-->
+<!--        console.log(img);-->
+<!--        将这个元素的详细情况进行打印-->
+<!--        console.dir(img);-->
+<!--        console.log(img.src);-->
+<!--        console.log(img.alt);-->
+<!--        console.log(img.title);-->
+<!--    </script>-->
+
+    <!-- 获取/修改表单元素属性 -->
+<!--    <input type="button" value="播放">-->
+<!--    <script>-->
+<!--        let button = document.querySelector('input');-->
+<!--        button.onclick = function(){-->
+<!--            if(button.value == '播放'){-->
+<!--                button.value = '暂停';-->
+<!--            }else{-->
+<!--                button.value = '播放';-->
+<!--            }-->
+<!--        } -->
+<!--    </script>-->
+
+    <!-- 全选取消案例 -->
+    <input type="checkbox" class="all">我全都要 <br>
+    <input type="checkbox" class="girl">貂蝉 <br>
+    <input type="checkbox" class="girl">小乔 <br>
+    <input type="checkbox" class="girl">安琪拉 <br>
+    <input type="checkbox" class="girl">妲己 <br>
+
+    <script>
+        // 1.获取要操作的表单元素
+        let all = document.querySelector('.all');
+        let girls = document.querySelectorAll('.girl');
+        // 2.实现点击 all 就选中所用的选项
+        all.onclick = function(){
+            // 循环每个 girl,设置 checked 属性
+            for(let i = 0;i < girls.length;i ++){
+                girls[i].checked = all.checked;
+            } 
+        }
+        // 3.针对 girls 设置点击操作函数
+        for(let i = 0;i < girls.length;i ++){
+            girls[i].onclick = function(){
+                // 根据 girls 的选中状态修改 all.checked 的值
+                // 当所有的 girls 都被选中的时候,就把 all.checked 设为 true
+                // 只要有一个 girl 没被选中,就把 all.checked 设为 false
+                // 单独写一个 checkGirl 函数来完成这个检测过程
+                all.checked = checkGirl(girls);
+            }
+        }
+        // 4.实现 checkGirl
+        function checkGirl () {
+            for(let i = 0; i < girls.length;i ++){
+                if(!girls[i].checked){
+                    // 只要有一个 girl 没被选中,就认为结果是 false
+                    return false;
+                }
+            }
+            // 所有 girl 被选中,返回 true;
+            return true;
+        }
+    </script>
+
+    <br>
+
+    <!-- 获取修改样式属性 -->
+    <!--  代码示例: 点击文字则放大字体 -->
+    <div style="font-size: 20px">
+        哈哈哈
+    </div>
+    <script>
+        // 每次点击文字,就把字号放大
+        let div = document.querySelector('div');
+        div.onclick = function(){
+            // 先获取当前的字体大小
+            console.log(div.style.fontSize);
+            let fontSize = parseInt(div.style.fontSize);
+            fontSize += 10;
+            div.style.fontSize = fontSize + "px";
+        }
+    </script>
+
+    <!-- 类名样式操作 -->
+    <div class=" container light">
+        这是一段话<br>
+        这是一段话<br>
+        这是一段话<br>
+        这是一段话<br>
+        这是一段话<br>
+        这是一段话<br>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 让 html 和 body 标签和浏览器的窗口一样高 */
+        html,body{
+            height: 100%;
+        }
+        .container {
+            width: 500px;
+            /* 高度 100% 意思是和父元素一样高 */
+            height: 100%;
+        }
+        .light {
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        .dark {
+            background-color: #333;
+            color: #f3f3f3;
+        }
+    </style>
+    <script>
+        let container = document.querySelector('.container');
+        container.onclick = function(){
+            // JS 中 String 也有一个 indesOf 方法
+            // 查找一个子串是否存在,存在返回下标,不存在返回 -1
+            if(container.className.indexOf('light') != -1){
+                // 当前是是日间模式,就修改成夜间
+                container.className = 'container dark';
+            }else{
+                // 当前是是夜间模式,就修改成日间
+                container.className = 'container light';
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
