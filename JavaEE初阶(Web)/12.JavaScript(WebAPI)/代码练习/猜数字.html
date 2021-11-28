@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id ="reset">重新开始一局游戏</button> <br>
+    请输入要输入的数字: <input type="text" id="number">
+    <button id="guess">猜</button>
+    <br>
+    已经猜的次数: <span id="count">0</span>
+    <br>
+    结果: <span id="result"></span>
+
+    <script>
+        // 1.先把需要用到的元素获取到
+        let resetButton = document.querySelector('#reset');
+        let numberInput = document.querySelector('#number');
+        let guessButton = document.querySelector('#guess');
+        let countSpan = document.querySelector('#count');
+        let resultSpan = document.querySelector('#result');
+        // 2.生成一个随机的整数,范围是[1,100]
+        let guessNum =  Math.floor(Math.random() * 100) + 1;
+        // 3.给 guessButton 设置点击事件
+        let guessCount = 0; // 表示猜的次数
+        guessButton.onclick = function(){
+            // 1).先更新猜的次数的显示
+            guessCount += 1;
+            countSpan.innerHTML = guessCount;
+            // 2).把输入框的内容取出来,和待猜的元素进行比较,返回"高了","低了"
+            // 3).能够在界面上显示高低的结果
+            let userNum = parseInt(numberInput.value);
+            if(userNum == guessNum){
+                // 猜对了
+                resultSpan.innerHTML = '猜对了';
+                resultSpan.style.color = 'green';
+            }else if(userNum > guessNum) {
+                // 猜高了
+                resultSpan.innerHTML = '猜高了';
+                resultSpan.style.color = 'red';
+            }else{
+                // 猜低了
+                resultSpan.innerHTML = '猜低了';
+                resultSpan.style.color = 'blue';
+            }
+        }
+
+        // 4.给 resetButton 设置点击事件
+        resetButton.onclick = function(){
+            // // 1).重新生成随机数
+            // guessNum = Math.floor(Math.random() * 100) + 1;
+            // // 2).把猜的次数设为 0
+            // guessCount = 0;
+            // countSpan.innerHTML = '';
+            // // 3).把猜的结果也清空
+            // resultSpan.innerHTML = '';
+            // // 4).把用户的输入框也清空
+            // numberInput.value = '';
+            loction.reload();
+        }
+
+    </script>
+</body>
+</html>
