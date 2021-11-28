@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 操作节点 -->
+    <div class="container">
+        <div class="one">cat</div>
+        <div class="two">dog</div>
+    </div>
+
+    <script>
+        // 1.创建一个元素
+        let div = document.createElement('div');
+        div.id = 'myDiv';
+        div.className = 'box';
+        div.innerHTML = 'hello world';
+        // console.log(div);
+        let container = document.querySelector('.container');
+        // 使用 appendChild 将节点插入到指定节点的最后一个孩子之后
+        // container.appendChild(div);
+
+        // 使用 insertBefore 将节点插入到指定节点之前
+        let oldChild = document.querySelector('.two');
+        container.insertBefore(div,oldChild);
+
+        // 删除节点
+        let input = document.querySelector('.container');
+        
+        input.onclick = function(){
+            let two = document.querySelector('.two');
+            let container = document.querySelector('.container');
+            container.removeChild(two);
+        }
+        
+
+
+
+    </script>
+
+    
+</body>
+</html>
