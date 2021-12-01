@@ -1,0 +1,50 @@
+/* 博客编辑页的样式 */
+
+.blog-edit-container {
+    width: 1000px;
+    height: calc(100% - 50px);
+    margin: 0 auto;
+} 
+
+.blog-edit-container .title {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#title {
+    height: 40px;
+    width: 875px;
+    font-size: 20px;
+    text-indent: 15px;
+    /* 去掉边框 轮廓线 并加上圆角矩形 */
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    /* 加上半透明的效果 */
+    background-color: rgba(255,255,255,0.6);
+}
+
+#submit {
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+
+    color: white;
+    background-color: orange;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+#submit:active {
+    background-color: #666;
+}
+
+.blog-edit-container #editor {
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.7);
+    opacity: 70%;
+}
