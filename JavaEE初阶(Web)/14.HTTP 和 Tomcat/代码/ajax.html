@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+        // 基于 jQury 里面的 ajax 来进行使用
+        $.ajax({
+            type:'POST',
+            url:'http://42.192.83.143:8089/AjaxMockServer/info',
+            success: function(data,status){
+                // data 就是响应的 body，status 就是响应的状态码
+                console.log(status);
+                console.log(data);
+            }
+        }) ;
+    </script>
+    <!-- <script>
+        // 1. 构造一个 XMLHttpRequest 对象
+        let httpRequest = new XMLHttpRequest();
+        // 4. 注册一个回调函数，用来异步的处理响应数据
+        // 此处注册的 function 不是立即执行的，什么时候响应到，什么时候执行
+        httpRequest.onreadystatechange = function(){
+            // readyState 的取值有很多种：
+            // 0. 0 表示请求未初始化
+            // 1. 1 表示和服务器建立了连接
+            // 2. 2 请求已经被服务器接收
+            // 3. 3 请求在服务器上正在处理
+            // 4. 4 请求完成，响应数据已经获取到
+            if(httpRequest.readyState == 4){
+                // 响应已到
+                // 获取响应的状态码 和 body
+                console.log(httpRequest.status);
+                console.log(httpRequest.responseText);
+            }
+        }
+        // 2. 构造一个 HTTP 请求
+        httpRequest.open('post','http://42.192.83.143:8089/AjaxMockServer/info')
+        // 3. 发送这个 HTTP 请求
+        httpRequest.send();
+    </script> -->
+</body>
+</html>
