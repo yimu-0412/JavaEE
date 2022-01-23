@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testPostJson</title>
+</head>
+<body>
+    <!-- 构造body为 json 格式的数据，就只能使用 ajax 的方式来实现 -->
+    <button onclick="sendJson()">发送请求</button>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        
+        function sendJson(){
+            var body ={
+                userId: 100,
+                classId: 1
+            };
+
+            $.ajax({
+                url: "postParameterJson2",
+                type: "post",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(body),
+                success: function(body,status){
+                    console.log(body);
+                }
+            });
+        }
+    </script>
+</body>
+</html> 
