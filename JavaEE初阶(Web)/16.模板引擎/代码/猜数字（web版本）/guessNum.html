@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜数字</title>
+</head>
+<body>
+    <form action="guessNum" method="post">
+        <input type="text" name="num">
+        <input type="submit" value="猜数字">
+    </form>
+
+    <!-- 这个 th：if 是一个条件显示的逻辑，if 后面的表达式为真就显示里面的标签，如果表达式结果为假，就不显示 -->
+    <div th:if="${!newGame}">
+        <!-- 这两个代码，是猜了之后才会显示，开始一局新游戏不会显示 -->
+        <div th:text="${result}"></div>
+        <div th:text="${count}"></div>
+    </div>
+    
+</body>
+</html>
