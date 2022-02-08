@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <body>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: 0;
+            } 
+            .container {
+                width: 400px;
+                margin: 0 auto;
+            }
+
+            h1 {
+                text-align: center;
+                padding: 20px;
+            }
+            p {
+                text-align: center;
+                color: #666;
+                padding: 10px 0;
+                font-size: 15px;
+            }
+
+            .row {
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            span {
+                width: 120px;
+                font-size: 18px;
+            }
+
+            input {
+                width: 280px;  
+                height: 30px;
+            }
+
+            #submit {
+                width: 400px;
+                height: 35px;
+                color: white;
+                background-color: orange;
+                border: none;
+                border-radius: 5px;
+                font-size: 18px;
+
+            }
+            #submit:active {
+                background-color: black;
+            }
+
+            .edit {
+                font-size: 18px;
+                padding-left: 5px;
+            }   
+        </style>
+        <form action="message" method="post">
+            <div class="container">
+                <h1>表白墙</h1>
+                <p>输入后点击提交,会将信息显示在表格中</p>
+                <div class="row">
+                    <span>谁</span>
+                    <input type="text" class="edit" name="from">
+                </div>
+                <div class="row">
+                    <span>对谁</span>
+                    <input type="text" class="edit" name="to">
+                </div>
+                <div class="row">
+                    <span>说什么</span>
+                    <input type="text" class="edit" name="message">
+                </div>
+                <div class="row">
+                    <input type="submit" value="提 交" id="submit">
+                </div>
+
+                <!-- 添加模板这里的变量，每个 row 都是一个表白墙上的消息 -->
+                <div class="row" th:each="message: ${messages}">
+                    <span th:text="${message.from}"></span>
+                    对
+                    <span th:text="${message.to}"></span>
+                    说：
+                    <span th:text="${message.message}"></span>
+                </div>
+            </div>
+        </form>
+        
+        <!-- 提交之后的消息，由服务器基于模板引擎进行构造 -->
+        <!-- 每次点击"提交" 都在下面新增一个.row,里面就是放置用户输入的话
+        <script>
+            let submitButton = document.querySelector('#submit');
+            submitButton.onclick = function(){
+                // 1.先获取编辑框的消息
+                let edits = document.querySelectorAll('.edit');
+                let from = edits[0].value; 
+                let to = edits[1].value;
+                let message = edits[2].value;
+                console.log(from + "对" + to + "说:" + message);
+                if(from == '' || to == '' || message == ''){
+                    // 对用户的输入做一个简单的检验,验证一下当前是否是合法的提交
+                    return;
+                }
+                // 2.根据内容,构造 HTML元素(.row 里面包含用户输入的话)
+                let row = document.createElement('div');
+                row.className = 'row';
+                row.innerHTML = from + "对" + to + "说:" + message;
+                // 3.把这个新的元素添加到 DOM 树上
+                let container = document.querySelector('.container');
+                container.appendChild(row);
+                // 4.清空原来的输入
+                for(let i = 0;i < edits.length;i ++){
+                    edits[i].value = '';
+                }
+            }
+        </script> -->
+
+    </body>
+</html>
