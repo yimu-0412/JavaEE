@@ -1,5 +1,0 @@
-service\impl\UserServiceImpl.class
-dao\impl\UserDaoImpl.class
-web\UserController.class
-service\UserService.class
-dao\UserDao.class
